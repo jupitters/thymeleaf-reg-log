@@ -1,4 +1,11 @@
 package com.jupitters.RegNLog.service;
 
-public interface UserService {
+import lombok.Data;
+
+@Data
+public class UserService {
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
 }
