@@ -3,7 +3,7 @@ package com.jupitters.RegNLog.dto;
 import lombok.Data;
 
 @Data
-public class UserRequestDto {
+public class UserRegistertDto {
     private String firstName;
     private String lastName;
     private String email;

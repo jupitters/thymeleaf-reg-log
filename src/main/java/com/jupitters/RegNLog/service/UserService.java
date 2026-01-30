@@ -1,11 +1,8 @@
 package com.jupitters.RegNLog.service;
 
-import lombok.Data;
+import com.jupitters.RegNLog.dto.UserRegistertDto;
+import com.jupitters.RegNLog.model.User;
 
-@Data
-public class UserService {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
+public interface UserService {
+    User register(UserRegistertDto user);
 }
