@@ -10,10 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/registration")
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/registration")
+    @GetMapping
+    public String showRegistationForm(){
+        return "registration";
+    }
+
     public String registerUser(@ModelAttribute("user") UserRegistertDto userDto){
         userService.register(userDto);
         return "redirect:/registration?success";
