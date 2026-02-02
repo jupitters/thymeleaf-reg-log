@@ -3,9 +3,10 @@ package com.jupitters.RegNLog.controller;
 import com.jupitters.RegNLog.dto.UserRegisterDto;
 import com.jupitters.RegNLog.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/registration")
 public class UserController {
