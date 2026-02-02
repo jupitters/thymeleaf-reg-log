@@ -1,6 +1,6 @@
 package com.jupitters.RegNLog.service.impl;
 
-import com.jupitters.RegNLog.dto.UserRegistertDto;
+import com.jupitters.RegNLog.dto.UserRegisterDto;
 import com.jupitters.RegNLog.model.Role;
 import com.jupitters.RegNLog.model.User;
 import com.jupitters.RegNLog.repository.UserRepository;
@@ -16,7 +16,7 @@ public class UserServiceImpl  implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public User register(UserRegistertDto request) {
+    public User register(UserRegisterDto request) {
         User user = new User();
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getFirstName());

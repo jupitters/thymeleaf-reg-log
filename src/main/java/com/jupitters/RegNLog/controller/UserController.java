@@ -1,9 +1,8 @@
 package com.jupitters.RegNLog.controller;
 
-import com.jupitters.RegNLog.dto.UserRegistertDto;
+import com.jupitters.RegNLog.dto.UserRegisterDto;
 import com.jupitters.RegNLog.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,8 +12,8 @@ public class UserController {
     private final UserService userService;
 
     @ModelAttribute("user")
-    public UserRegistertDto userRegistertDto(){
-        return new UserRegistertDto();
+    public UserRegisterDto userRegistertDto(){
+        return new UserRegisterDto();
     }
 
     @GetMapping
@@ -23,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping
-    public String registerUser(@ModelAttribute("user") UserRegistertDto userDto){
+    public String registerUser(@ModelAttribute("user") UserRegisterDto userDto){
         userService.register(userDto);
         return "redirect:/registration?success";
     }
