@@ -3,6 +3,7 @@ package com.jupitters.RegNLog.controller;
 import com.jupitters.RegNLog.dto.UserRegistertDto;
 import com.jupitters.RegNLog.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,7 +18,8 @@ public class UserController {
     }
 
     @GetMapping
-    public String showRegistationForm(){
+    public String showRegistationForm(Model model){
+        model.addAttribute("user", new UserRegistertDto());
         return "registration";
     }
 
