@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
+    @ModelAttribute("user")
+    public UserRegistertDto userRegistertDto(){
+        return new UserRegistertDto();
+    }
+
     @GetMapping
     public String showRegistationForm(){
         return "registration";
