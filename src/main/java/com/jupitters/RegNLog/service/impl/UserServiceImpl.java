@@ -6,11 +6,15 @@ import com.jupitters.RegNLog.model.User;
 import com.jupitters.RegNLog.repository.UserRepository;
 import com.jupitters.RegNLog.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -37,5 +41,9 @@ public class UserServiceImpl  implements UserService {
         }
 
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), null);
+    }
+
+    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 }
