@@ -32,14 +32,4 @@ public class Security implements SecurityFilterChain {
 
         return http.build();
     }
-
-    @Override
-    public boolean matches(HttpServletRequest request) {
-        return false;
-    }
-
-    @Override
-    public List<Filter> getFilters() {
-        return List.of();
-    }
 }
