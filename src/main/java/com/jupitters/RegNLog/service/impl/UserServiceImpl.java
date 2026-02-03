@@ -6,6 +6,8 @@ import com.jupitters.RegNLog.model.User;
 import com.jupitters.RegNLog.repository.UserRepository;
 import com.jupitters.RegNLog.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -25,5 +27,10 @@ public class UserServiceImpl  implements UserService {
         user.setRole(Arrays.asList(new Role("USER")));
 
         return userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
     }
 }
