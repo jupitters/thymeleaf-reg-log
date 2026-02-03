@@ -27,18 +27,17 @@ public class Security {
                                 "/js/**"
                         ).permitAll()
                         .anyRequest().authenticated()
-                        .and()
-                        .formLogin()
-                        .loginPage("/login")
-                        .permitAll()
-                        .and()
-                        .logout()
+                )
+                .formLogin(
+                        form -> form
+                                .loginPage("/login")
+                                .permitAll()
+                )
+                .logout(logout -> logout
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/login?logout");
-                )
-                .formLogin(Customizer.withDefaults());
+                        .logoutSuccessUrl("/login?logout")
+                );
 
         return http.build();
     }
