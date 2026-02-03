@@ -6,10 +6,12 @@ import com.jupitters.RegNLog.model.User;
 import com.jupitters.RegNLog.repository.UserRepository;
 import com.jupitters.RegNLog.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -21,13 +23,16 @@ import java.util.stream.Collectors;
 public class UserServiceImpl  implements UserService {
     private final UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @Override
     public User register(UserRegisterDto request) {
         User user = new User();
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getFirstName());
         user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(Arrays.asList(new Role("USER")));
 
         return userRepository.save(user);
