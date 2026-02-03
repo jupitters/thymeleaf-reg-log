@@ -15,7 +15,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-public class Security implements SecurityFilterChain {
+public class Security {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -41,19 +41,5 @@ public class Security implements SecurityFilterChain {
                 .formLogin(Customizer.withDefaults());
 
         return http.build();
-    }
-
-    @Override
-    public boolean matches(HttpServletRequest request) {
-        return false;
-    }
-
-    @Override
-    public List<Filter> getFilters() {
-        return List.of();
-    }
-
-    protected void configure (HttpSecurity http) throws Exception {
-
     }
 }
