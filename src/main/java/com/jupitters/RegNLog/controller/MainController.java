@@ -9,4 +9,8 @@ public class MainController {
     public String login(){
         return "login";
     }
+
+    public String home(){
+        return "index";
+    }
 }
